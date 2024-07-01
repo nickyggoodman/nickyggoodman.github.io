@@ -1,0 +1,20 @@
+.container {
+    margin: auto;
+    max-width: 42em;
+}
+img {
+    max-width: 200px;
+}
+
+.linklogo {
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: 1em;
+}
+
+
+.photos {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 1em;
+}
