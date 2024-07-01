@@ -1,14 +1,24 @@
+html {
+    font-family: sans-serif;
+}
+
 .container {
     margin: auto;
     max-width: 42em;
 }
+
 img {
     max-width: 200px;
 }
 
+.linklogo:hover {
+    opacity: 0.6;
+}
+
 .linklogo {
-    width: 1.2em;
-    height: 1.2em;
+
+    width: 1.5em;
+    height: 1.5em;
     margin-right: 1em;
 }
 
