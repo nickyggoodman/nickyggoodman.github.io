@@ -16,15 +16,50 @@ img {
 }
 
 .linklogo {
-
     width: 1.5em;
     height: 1.5em;
     margin-right: 1em;
 }
 
-
-.photos {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 1em;
+.slideshow {
+    max-width: 640px;
+    position: relative;
+    margin: auto;
 }
+
+.slide {
+    display: none;
+}
+
+#slide1 {
+    display: block;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.slidenumber {
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+
+
