@@ -30,6 +30,10 @@ html {
     background-color: black;
 }
 
+iframe {
+    border: none;
+}
+
 #slide1 {
     display: block;
 }
@@ -73,6 +77,5 @@ html {
     background-color: rgba(0, 0 , 0, 0.5)
     
   }
-
 
 
