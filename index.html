@@ -7,11 +7,17 @@
 
     <body>
         <div class="container">
-            <a h1 class="name" href="/index.html"><h1>Nicholas Goodman</h1></a>
+            <div id="titlebar">
+                <a class="name" href="/index.html"><h1>Nicholas Goodman</h1></a>
+                <div class="titlelinks">
+                    <a class="titlelink" href="blog.html">Blog</a>
+                </div>
+            </div>
             <a href="https://github.com/nickyggoodman"><img id="github" class="linklogo" src="resources/svg/github-mark.svg"></img></a>
             <a href="https://www.linkedin.com/in/nggood/"><img id="linkedin" class="linklogo" src="resources/svg/linkedin.svg"></a>
-            <a href= "mailto: nickggoodman@outlook.com"><img id="mailto" class="linklogo" src="resources/svg/mail.svg"></img> </a>
-            <pre>
+            <a href="mailto: nickggoodman@outlook.com"><img id="mailto" class="linklogo" src="resources/svg/mail.svg"></img> </a>
+            <div class="intro">
+            <pre class="tuxMessage">
  _________________________________________
 / Greetings! My name is Nicholas. I       \
 | graduated from the University of        |
@@ -37,8 +43,12 @@
       \___)=(___/
                 
             </pre>
+            <div class="previewSpacer"></div>
+            <div class="previewWindow">
+            </div>
+        </div>
             <h2>Projects</h2>
-            <ul>
+            <ul class="projectslist">
                 <li><a href="https://github.com/nickyggoodman/playback">Playback</a>
                     <ul>
                         <li>
@@ -59,7 +69,7 @@
                     <ul>
                         <li>
                             A minimalistic typing test, emphasizing clean interface design. Users can assess and improve typing speed
-with distraction-free ease, leveraging intuitive tracking and performance monitoring features.
+                            with distraction-free ease, leveraging intuitive tracking and performance monitoring features.
                         </li>
                     </ul>
                 </li>

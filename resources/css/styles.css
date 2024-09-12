@@ -1,11 +1,52 @@
 html {
-    font-family: sans-serif;
+    font-family: Georgia;
     background-color: #ffffff;
+}
+
+.intro {
+    display: flex;
+}
+
+.previewSpacer {
+    flex: 1;
+}
+
+.previewWindow {
+    /* flex: 1; */
+    border: .2em double rgb(0, 0, 0);
+    height: 30em;
+    width: 40em;
 }
 
 .container {
     margin: auto;
     max-width: 70em; /* col width of 50-70 best for readers*/
+}
+
+#titlebar {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(243, 243, 243);
+    display: flex;
+    align-items: center;
+}
+
+#titlebar a:hover{
+    color: #4cb446;
+}
+
+a:hover {
+    color: #4cb446;
+}
+
+.titlelink{
+    padding: 1em;
+    text-decoration: none;
+    color: rgb(105, 105, 105);
+}
+
+#titlebar > .name {
+    flex: 1;
 }
 
 :hover#github {
@@ -20,7 +61,6 @@ html {
     filter: invert(0.5) sepia(1) saturate(2) hue-rotate(90deg);
 }
 
-
 .linklogo {
     width: 1.5em;
     height: 1.5em;
@@ -33,10 +73,15 @@ a.name {
 }
 
 a.name > h1 {
-    /* display: inline; */
+    display: inline;
 }
 
-a.name:hover{
+.projectslist a {
+    color: rgb(109, 109, 172);
+    text-decoration: none;
+}
+
+.projectslist a:hover {
     color: #4cb446;
 }
 
