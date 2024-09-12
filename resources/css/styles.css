@@ -8,9 +8,18 @@ html {
     max-width: 70em; /* col width of 50-70 best for readers*/
 }
 
-.linklogo:hover {
-    opacity: 0.6;
+:hover#github {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(0deg);
 }
+
+:hover#linkedin {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(180deg);
+}
+
+:hover#mailto {
+    filter: invert(0.5) sepia(1) saturate(2) hue-rotate(90deg);
+}
+
 
 .linklogo {
     width: 1.5em;
@@ -18,64 +27,22 @@ html {
     margin-right: 1em;
 }
 
-.slideshow {
-    max-width: 640px;
-    position: relative;
-    margin: auto;
+a.name {
+    color: rgb(105, 105, 105);
+    text-decoration: none;
 }
 
-.slide {
-    display: none;
-    width: 640px;
-    background-color: black;
+a.name > h1 {
+    /* display: inline; */
 }
 
-iframe {
-    border: none;
+a.name:hover{
+    color: #4cb446;
 }
 
-#slide1 {
-    display: block;
+  @media (max-width:calc(70em * 1.3)){
+    .container {
+        max-width: 70vw;
+    }
+
 }
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: bold;
-    font-size: 32px;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.slidenumber {
-    font-size: 16px;
-    color: white;
-    font-weight: 400;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-}
-
-.caption {
-    color: #f2f2f2;
-    font-size: 15px;
-    padding: 8px 1px;
-    position: absolute;
-    bottom: 8px;
-    width: 100%;
-    text-align: center;
-    background-color: rgba(0, 0 , 0, 0.5)
-    
-  }
-
-
