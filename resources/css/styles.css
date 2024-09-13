@@ -58,7 +58,7 @@ a:hover {
 }
 
 :hover#mailto {
-    filter: invert(0.5) sepia(1) saturate(2) hue-rotate(90deg);
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(320deg);
 }
 
 .linklogo {
@@ -68,7 +68,7 @@ a:hover {
 }
 
 a.name {
-    color: rgb(105, 105, 105);
+    color: rgb(81, 81, 81);
     text-decoration: none;
 }
 
