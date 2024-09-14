@@ -28,6 +28,6 @@ https://github.com/VaasuDevanS/cowsay-python/blob/main/cowsay/main.py
 
 */
 
-function draw() {
+function draw(text) {
     // draw here
 }
