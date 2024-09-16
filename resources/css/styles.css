@@ -7,12 +7,12 @@ html {
     display: flex;
 }
 
-.previewSpacer {
+.tuxsay {
     flex: 1;
 }
 
 .previewWindow {
-    /* flex: 1; */
+    flex: 1;
     border: .2em double rgb(0, 0, 0);
     height: 30em;
     width: 40em;
