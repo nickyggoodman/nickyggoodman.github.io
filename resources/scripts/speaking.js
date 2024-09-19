@@ -14,7 +14,7 @@ https://github.com/VaasuDevanS/cowsay-python/blob/main/cowsay/main.py
 | have been residing in Baltimore for the |
 | past three years. For further details   |
 | about my professional experience,       |
-\ please refer to my resume               /
+\ please refer to my <a>resume.</a>               /
  -----------------------------------------          
     \
      \
@@ -28,62 +28,66 @@ https://github.com/VaasuDevanS/cowsay-python/blob/main/cowsay/main.py
 
 */
 
+//await new Promise(r => setTimeout(r, 20));
+
 const elem = document.getElementById("textBubble");
-let text = "Greetings! My name is Nicholas. I\ngraduated from the University of\nMaryland, College Park in May 2024 with\ndual degrees in Computer Science and\nEconomics. Some of my interests are\nsoftware, aquariums, design, jazz,\nnature, biking, and systems.\nOriginally from Frederick, Maryland, I\nhave been residing in Baltimore for the\npast three years. For further details\nabout my professional experience,\nplease refer to my resume";
+text = "Greetings! My name is Nicholas. I graduated from the University of\
+ Maryland, College Park in May 2024 with dual degrees in Computer Science and\
+ Economics. Some of my interests are software, aquariums, design, jazz,\
+ nature, biking, and systems. For further details about my professional experience,\
+ please refer to my resume."
+text = wrap(text, 49);
 generateTextBubble(text, elem);
+
 
 async function generateTextBubble(text, element) {
     
     let textBubble = []
     const message = text.split("\n");
-    const max = max_length(message);
+    const max = max_length(message) + 2;
 
-    for (let i = 0; i < message.length; i++) { 
-        
-        textBubble.push([]); // make a new line.
-        
+    for (let i = 0; i < message.length; i++) {
+        // makes a new line in the textBubble array
+        textBubble.push("1");
+        /*
+        console.log("textBubble[i]");
+        create a fixed sized line that we will slice elements into so that the
+        borders stay uniform and don't jump around as they are generated
+        */
         if (i == 0) {
-            textBubble[i].push("< ");
+            textBubble[0] = "<" + " ".repeat(max) + ">\n";
         } else if (i == 1) {
-            textBubble[0][0] = "/ "
-            textBubble[0][max + 1] = " \\\n"
-            textBubble[1].push("\\ ")
+            textBubble[0] = "/" + textBubble[0].slice(1, textBubble[0].length-2) + "\\\n";
+            textBubble[1] = "\\" + " ".repeat(max) + "/\n";
         } else {
-            textBubble[i].push("\\ ")
-            textBubble[i-1][0] = "| "
-            textBubble[i-1][max + 1] = " |\n"
+            textBubble[i-1] = "|" + textBubble[i-1].slice(1, textBubble[i-1].length-2) + "|\n";
+            textBubble[i] = "\\" + " ".repeat(max) + "/\n";
         }
-
-        for (let j = 0; j < max; j++) {
-            if (j < message[i].length) {
-                await new Promise(r => setTimeout(r, 20));
-                textBubble[i].push(message[i][j]);
-                updateTextBubble(textBubble, element);
-            } else {
-                await new Promise(r => setTimeout(r, 20));
-                textBubble[i].push(" ");
-                updateTextBubble(textBubble, element);
-            }    
+        // slice the letters into the line. 
+        for (j = 0; j < message[i].length; j++) {
+            textBubble[i] = (textBubble[i].slice(0, j+2) + message[i][j] + 
+                                textBubble[i].slice(j+3, textBubble[i].length));
+            /*
+            Note that this function call can be at the end of this function if
+            you don't want to make a typing animation with setTimeout.
+            */
+            updateTextBubble(textBubble, element, max);
+            await new Promise(r => setTimeout(r, 10));
         }
-
-        if (i == 0) {
-            textBubble[i].push(" >\n");
-        } else {
-            textBubble[i].push(" /\n")
-        }
+        
     }
-    updateTextBubble(textBubble, element);
 } 
 
-function updateTextBubble(textbubble, element) {
-    input = ""
+
+function updateTextBubble(textbubble, element, max) {
+    content = " " + "_".repeat(max) + "\n";
     for (i = 0; i < textbubble.length; i++) {
-        for (j = 0; j < textbubble[i].length; j++) {
-            input += textbubble[i][j]
-        }
+        content += textbubble[i];
     }
-    element.innerHTML = input;
+    content += " " + "-".repeat(max);
+    element.innerHTML = content;
 }
+
 
 function max_length(message) {
     let curr = 0, max = 0;
@@ -96,6 +100,30 @@ function max_length(message) {
     return max;
 }
 
-function generateCharacter(character) {
-    
+
+/*
+lazily written wrapper function. should break on more things.
+*/
+function wrap(str, limit) {
+    let res = "";
+    let i = 0;
+    while (i < str.length) {
+        res = res + str[i];
+        if ((i + 1) % limit == 0) {
+            while(str[i] != " " && str[i] != ".") {
+                i++;
+                res = res + str[i];
+            }
+            res = res + "\n"
+        }
+        i++;
+    }
+    return res;
 }
+
+
+// TODO: generate character for customer character selection
+function generateCharacter(character) {
+
+}
+
