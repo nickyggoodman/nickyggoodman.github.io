@@ -6,7 +6,7 @@ html {
 .intro {
     margin: auto;
     display: flex;
-    height: 25em;
+    height: 21rem;
 }
 
 .tuxsay {
@@ -85,12 +85,12 @@ a.name > h1 {
     display: inline;
 }
 
-.projectslist a {
+a {
     color: rgb(109, 109, 172);
     text-decoration: none;
 }
 
-.projectslist a:hover {
+a:hover {
     color: #4cb446;
 }
 
