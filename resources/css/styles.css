@@ -4,15 +4,15 @@ html {
 }
 
 .intro {
-    margin: auto;
     display: flex;
-    height: 21rem;
 }
 
 .tuxsay {
     margin-top: auto;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: auto;
+    height: 25rem;
     flex: 1;
     display: flex;
     flex-direction: column;
