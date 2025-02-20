@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>kmp</title>
+    <link href="./resources/css/styles.css" rel="stylesheet" />
+    <link href="resources/css/prism.css" rel="stylesheet"/>
+    <link href="resources/css/codeblock.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <div id="titlebar">
+      <a class="name" href="index.html"><h1>Nicholas Goodman</h1></a>
+      <div class="titlelinks">
+        <a class="titlelink" href="resume.html">Résumé</a>
+        <a class="titlelink" href="blog.html">Blog</a>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-python">
+"""
+Knuth-Morris-Pratt algorithm
+(https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm)
+"""
+
+# input: 
+# String (char list) S, the text to be searched
+# String (char list) W, the word sought
+def kmp_search(S, W):
+    j = 0 # the position of the current character in S
+    k = 0 # the positions of the current character in W
+    T = kmp_table(W) # an array of integers computed in kmp_table
+
+    while j < len(S):
+        if W[k] == S[j]:
+            j += 1
+            k += 1
+            if k == len(W):
+                m = j - k # start index of word in string
+                return m
+        else: 
+            k = T[k]
+            if k < 0:
+                j += 1
+                k += 1
+        
+
+# input: 
+# String (char list) W, the word sought 
+def kmp_table(W): 
+    pos = 1 # current positions we are computing in T
+    cnd = 0 # the zero-based index in W of the next character of the current candidate substring
+
+    # with 0
+    T = [-1] + ([0] * (len(W) + 1))
+
+    while pos < len(W):
+        if W[pos] == W[cnd]:
+            T[pos] = T[cnd]
+        else:
+            T[pos] = cnd
+            while cnd >= 0 and W[pos] != W[cnd]:
+                cnd = T[cnd]
+        pos += 1
+        cnd += 1
+
+    T[pos] = cnd
+    
+    return T
+      </code>
+    </pre>
+  <script src="resources/scripts/prism.js"></script>
+  </body>
+</html>
