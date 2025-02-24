@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>kmp</title>
+    <link href="../resources/css/styles.css" rel="stylesheet" />
+    <link href="../resources/css/prism.css" rel="stylesheet"/>
+    <link href="../resources/css/codeblock.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <div id="titlebar">
+      <a class="name" href="../index.html"><h1>Nicholas Goodman</h1></a>
+      <div class="titlelinks">
+        <a class="titlelink" href="../resume.html">Résumé</a>
+        <a class="titlelink" href="../blog.html">Blog</a>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-python">
+'''
+Author: Dr. Justin Wyss-Gallifent -- University of Maryland
+Source: https://www.math.umd.edu/~immortal/CMSC351/
+'''
+
+import random
+A = []
+for i in range(0,15):
+    A.append(random.randint(0,100))
+n = len(A)
+print(A)
+def quicksort(l,r,indent):
+    if l&lt;r:
+        resultingpivotindex = partition(l,r,indent+2)
+        quicksort(l,resultingpivotindex-1,indent+2)
+        quicksort(resultingpivotindex+1,r,indent+2)
+        print(indent*'_' + 'Recombine: '+str(A[l:r+1]))
+
+def partition(l,r,indent):
+    print(indent*'_' + 'Subarray: ' + str(A[l:r+1]))
+    # To use a different pivotvalue
+    # swap it with A[r] here.
+    pivotvalue = A[r]
+    t = l
+    for i in range(l,r):
+        if A[i] <= pivotvalue:
+            temp = A[t]
+            A[t] = A[i]
+            A[i] = temp
+            t = t + 1
+    temp = A[t]
+    A[t] = A[r]
+    A[r] = temp
+    print(indent*'_' + 'Pivot around final element.')
+    print(indent*'_' + 'Result: ' + str(A[l:r+1]))
+    return(t)
+
+quicksort(0,n-1,0)
+print(A)
+      </code>
+    </pre>
+  <script src="../resources/scripts/prism.js"></script>
+  </body>
+</html>

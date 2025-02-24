@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>kmp</title>
+    <link href="../resources/css/styles.css" rel="stylesheet" />
+    <link href="../resources/css/prism.css" rel="stylesheet"/>
+    <link href="../resources/css/codeblock.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <div id="titlebar">
+      <a class="name" href="../index.html"><h1>Nicholas Goodman</h1></a>
+      <div class="titlelinks">
+        <a class="titlelink" href="../resume.html">Résumé</a>
+        <a class="titlelink" href="../blog.html">Blog</a>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-python">
+'''
+Author: Dr. Justin Wyss-Gallifent -- University of Maryland
+Source: https://www.math.umd.edu/~immortal/CMSC351/
+'''
+
+def bfs(EL,n,s):
+    Q = [s]
+    D = [False] * n
+    D[s] = True
+    V = [s]
+    print('Q = ' + str(Q))
+    print('V = ' + str(V))
+    #print('D = ' + str(D).replace('True','T').replace('False','F'))
+    while len(Q) != 0:
+        x = Q.pop(0)
+        for y in EL[x]:
+            if not D[y]:
+                D[y] = True
+                V.append(y)
+                Q.append(y)
+        print('Q = ' + str(Q))
+        print('V = ' + str(V))
+        #print('D = ' + str(D).replace('True','T').replace('False','F'))
+    return(V)
+EL = [
+    [1, 4, 5],
+    [0, 2, 6],
+    [1, 3, 6, 7],
+    [2],
+    [0, 8],
+    [0, 6, 8, 9],
+    [1, 2, 5, 11],
+    [2],
+    [4, 5, 13],
+    [5, 10],
+    [9, 14],
+    [6, 15],
+    [13],
+    [8, 12],
+    [10],
+    [11]
+]
+n = 16
+s = 0
+visited = bfs(EL,n,s)
+print('Visited = ' + str(visited))
+      </code>
+    </pre>
+  <script src="../resources/scripts/prism.js"></script>
+  </body>
+</html>

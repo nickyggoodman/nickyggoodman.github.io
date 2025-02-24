@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>kmp</title>
+    <link href="../resources/css/styles.css" rel="stylesheet" />
+    <link href="../resources/css/prism.css" rel="stylesheet"/>
+    <link href="../resources/css/codeblock.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <div id="titlebar">
+      <a class="name" href="../index.html"><h1>Nicholas Goodman</h1></a>
+      <div class="titlelinks">
+        <a class="titlelink" href="../resume.html">Résumé</a>
+        <a class="titlelink" href="../blog.html">Blog</a>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-python">
+'''
+Author: Dr. Justin Wyss-Gallifent - University of Maryland
+Source: https://www.math.umd.edu/~immortal/CMSC351/
+'''
+
+import random
+
+A = []
+for i in range(0,20):
+    A.append(random.randint(-10,10))
+
+n = len(A)
+print(A)
+
+maxoverall = A[0]
+maxendingati = A[0]
+for i in range(1,n):
+    maxendingati = max(maxendingati+A[i],A[i])
+    maxoverall = max(maxoverall,maxendingati)
+    print('Best sum ending with index i='+str(i)+' is '+str(maxoverall))
+
+print(maxoverall)
+      </code>
+    </pre>
+  <script src="../resources/scripts/prism.js"></script>
+  </body>
+</html>

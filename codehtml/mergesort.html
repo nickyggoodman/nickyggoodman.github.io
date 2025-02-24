@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>kmp</title>
+    <link href="../resources/css/styles.css" rel="stylesheet" />
+    <link href="../resources/css/prism.css" rel="stylesheet"/>
+    <link href="../resources/css/codeblock.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <div id="titlebar">
+      <a class="name" href="../index.html"><h1>Nicholas Goodman</h1></a>
+      <div class="titlelinks">
+        <a class="titlelink" href="../resume.html">Résumé</a>
+        <a class="titlelink" href="../blog.html">Blog</a>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-python">
+'''
+Author: Dr. Justin Wyss-Gallifent -- University of Maryland
+Source: https://www.math.umd.edu/~immortal/CMSC351/
+'''
+
+import random
+def mergesort(A,indent):
+    print(indent * '_' + 'Mergesort:' + str(A))
+    if len(A) > 1:
+        m = len(A) // 2
+        L = A[:m]
+        R = A[m:]
+        mergesort(L,indent+2)
+        mergesort(R,indent+2)
+        i = 0
+        j = 0
+        k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                A[k] = L[i]
+                i += 1
+            else:
+                A[k] = R[j]
+                j += 1
+            k += 1
+        while i < len(L):
+            A[k] = L[i]
+            i += 1
+            k += 1
+        while j < len(R):
+            A[k] = R[j]
+            j += 1
+            k += 1
+        print(indent * '_' + 'Merge:' + str(L) + ' and ' + str(R))
+        print(indent * '_' + 'Result: ' + str(A))
+A = []
+for i in range(0,11):
+    A.append(random.randint(0,100))
+print(A)
+mergesort(A,0)
+print(A)
+      </code>
+    </pre>
+  <script src="../resources/scripts/prism.js"></script>
+  </body>
+</html>

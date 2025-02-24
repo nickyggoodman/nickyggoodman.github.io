@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>kmp</title>
+    <link href="../resources/css/styles.css" rel="stylesheet" />
+    <link href="../resources/css/prism.css" rel="stylesheet"/>
+    <link href="../resources/css/codeblock.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+    <div id="titlebar">
+      <a class="name" href="../index.html"><h1>Nicholas Goodman</h1></a>
+      <div class="titlelinks">
+        <a class="titlelink" href="../resume.html">Résumé</a>
+        <a class="titlelink" href="../blog.html">Blog</a>
+      </div>
+    </div>
+
+    <pre>
+      <code class="language-python">
+'''
+Author: Dr. Justin Wyss-Gallifent -- University of Maryland
+Source: https://www.math.umd.edu/~immortal/CMSC351/
+'''
+
+import random
+import math
+def binarysearch(A,TARGET):
+    L = 0
+    R = len(A)-1
+    while L <= R:
+        print('Checking: '+str(A[L:R+1]))
+        C = math.floor((L+R)/2)
+        if A[C] == TARGET:
+            print('Checking: [' + str(A[C]) + ']')
+            return(C)
+        elif TARGET < A[C]:
+            R = C-1
+        elif TARGET > A[C]:
+            L = C+1
+    return(False)
+A = []
+for i in range(0,20):
+    A.append(random.randint(0,50))
+A.sort()
+print(A)
+TARGET = 10
+result = binarysearch(A,TARGET)
+if result == False:
+    print('Not Found')
+else:
+    print('Found at index ' + str(result))
+      </code>
+    </pre>
+  <script src="../resources/scripts/prism.js"></script>
+  </body>
+</html>
