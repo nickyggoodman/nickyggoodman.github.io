@@ -93,18 +93,19 @@ async function generateTextBubbleReverse(text, element) {
   const message = text.split("\n");
   const max = max_length(message) + 2;
 
-  for (let i = 0; i < message.length; i++) {
+  for (let i = 0; i < message.length + 1; i++) {
     textBubble.push("\n");
   }
 
   for (let i = 0; i < message.length; i++) {
+    textBubble[textBubble.length - i - 2] = "  " + "-".repeat(max) + "\n"; 
     if (i == 0) {
-      textBubble[textBubble.length - 1] = "<" + " ".repeat(max) + ">";
+      textBubble[textBubble.length - 1] = "< " + " ".repeat(max) + " >";
     } else {
-      textBubble[textBubble.length - i - 1] = "/" + message[0] + "\\\n"
-      textBubble[textBubble.length - 1] = "\\" + " ".repeat(max) + "/";
+      textBubble[textBubble.length - i - 1] = "/ " + message[0] + " ".repeat(max - message[0].length)  + " \\\n"
+      textBubble[textBubble.length - 1] = "\\ " + " ".repeat(max) + " /";
       for (let j = 1; j < i; j++) {
-        textBubble[textBubble.length - i + j - 1] = "|" + message[j] + "|\n" 
+        textBubble[textBubble.length - i + j - 1] = "| " + message[j] + " ".repeat(max - message[j].length) + " |\n";
       }
     }
 
@@ -119,7 +120,7 @@ async function generateTextBubbleReverse(text, element) {
         you don't want to make a typing animation with setTimeout.
         */
         updateTextBubble(textBubble, element, max);
-        await new Promise(r => setTimeout(r, 60));
+        await new Promise(r => setTimeout(r, 12));
     }
         
   }
@@ -133,6 +134,7 @@ function updateTextBubble(textbubble, element, max) {
     for (i = 0; i < textbubble.length; i++) {
         content += textbubble[i];
     }
+    content += "\n  " + "-".repeat(max);
     element.innerHTML = content;
 }
 
