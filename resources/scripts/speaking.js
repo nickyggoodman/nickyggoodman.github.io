@@ -32,7 +32,7 @@ https://github.com/VaasuDevanS/cowsay-python/blob/main/cowsay/main.py
 
 const elem = document.getElementById("textBubble");
 let text = "Greetings! My name is Nicholas. I graduated from the University of\
- Maryland, College Park in May 2024 with a dual degrees in Computer Science and\
+ Maryland, College Park in May 2024 with a dual degree in Computer Science and\
  Economics.Some of my interests are software, aquariums, design, jazz,\
  nature, biking, and systems. For further details about my professional experience,\
  please refer to my resume."
