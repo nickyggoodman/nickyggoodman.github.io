@@ -31,24 +31,32 @@ https://github.com/VaasuDevanS/cowsay-python/blob/main/cowsay/main.py
 //await new Promise(r => setTimeout(r, 20));
 
 const elem = document.getElementById("textBubble");
-text = "Greetings! My name is Nicholas. I graduated from the University of\
- Maryland, College Park in May 2024 with dual degrees in Computer Science and\
+let text = "Greetings! My name is Nicholas. I graduated from the University of\
+ Maryland, College Park in May 2024 with a dual degrees in Computer Science and\
  Economics.Some of my interests are software, aquariums, design, jazz,\
  nature, biking, and systems. For further details about my professional experience,\
  please refer to my resume."
+
 text = wrap(text, 49);
-generateTextBubble(text, elem);
+generateTextBubbleReverse(text, elem);
 
-
+// TODO: reverse order such that the entire block is populated, and that the
+// lines are updated from the bottom up. This should keep the width consistent
+// such that the lines are updated from the text bubble line without interupting
+// the content below the tuxsay
 async function generateTextBubble(text, element) {
     
     let textBubble = []
     const message = text.split("\n");
     const max = max_length(message) + 2;
 
+    for(let i = 0; i < message.length; i++) {
+        textBubble.push("");
+    }
+
     for (let i = 0; i < message.length; i++) {
         // makes a new line in the textBubble array
-        textBubble.push("1");
+
         /*
         console.log("textBubble[i]");
         create a fixed sized line that we will slice elements into so that the
@@ -63,6 +71,7 @@ async function generateTextBubble(text, element) {
             textBubble[i-1] = "|" + textBubble[i-1].slice(1, textBubble[i-1].length-2) + "|\n";
             textBubble[i] = "\\" + " ".repeat(max) + "/\n";
         }
+
         // slice the letters into the line. 
         for (j = 0; j < message[i].length; j++) {
             textBubble[i] = (textBubble[i].slice(0, j+2) + message[i][j] + 
@@ -72,19 +81,58 @@ async function generateTextBubble(text, element) {
             you don't want to make a typing animation with setTimeout.
             */
             updateTextBubble(textBubble, element, max);
-            await new Promise(r => setTimeout(r, 10));
+            await new Promise(r => setTimeout(r, 12));
         }
         
     }
 } 
 
+async function generateTextBubbleReverse(text, element) {
+
+  let textBubble = [];
+  const message = text.split("\n");
+  const max = max_length(message) + 2;
+
+  for (let i = 0; i < message.length; i++) {
+    textBubble.push("\n");
+  }
+
+  for (let i = 0; i < message.length; i++) {
+    if (i == 0) {
+      textBubble[textBubble.length - 1] = "<" + " ".repeat(max) + ">";
+    } else {
+      textBubble[textBubble.length - i - 1] = "/" + message[0] + "\\\n"
+      textBubble[textBubble.length - 1] = "\\" + " ".repeat(max) + "/";
+      for (let j = 1; j < i; j++) {
+        textBubble[textBubble.length - i + j - 1] = "|" + message[j] + "|\n" 
+      }
+    }
+
+    
+
+    // slice the letters into the line. 
+    for (j = 0; j < message[i].length; j++) {
+        textBubble[textBubble.length - 1] = (textBubble[textBubble.length - 1].slice(0, j+2) + message[i][j] + 
+                            textBubble[textBubble.length - 1].slice(j+3, textBubble[textBubble.length - 1].length));
+        /*
+        Note that this function call can be at the end of this function if
+        you don't want to make a typing animation with setTimeout.
+        */
+        updateTextBubble(textBubble, element, max);
+        await new Promise(r => setTimeout(r, 60));
+    }
+        
+  }
+
+
+
+}
 
 function updateTextBubble(textbubble, element, max) {
-    content = " " + "_".repeat(max) + "\n";
+    let content = "";
     for (i = 0; i < textbubble.length; i++) {
         content += textbubble[i];
     }
-    content += " " + "-".repeat(max);
     element.innerHTML = content;
 }
 
