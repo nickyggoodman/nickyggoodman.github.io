@@ -96,14 +96,14 @@ a:hover {
     color: #4cb446;
 }
 
-  @media (max-width:calc(80em)){
-    .container {
-        max-width: 90vw;
-    }
+@media (max-width:calc(80em)){
+  .container {
+      max-width: 90vw;
+  }
 
-    .intro {
-        flex-direction: column;
-    }
+  .intro {
+      flex-direction: column;
+  }
 
 }
 
