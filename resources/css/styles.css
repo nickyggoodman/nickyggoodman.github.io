@@ -24,7 +24,6 @@ body {
 }
 
 #textBubble {
-  height: 9em;
 }
 .previewWindow {
     border: .2em double rgb(0, 0, 0);
