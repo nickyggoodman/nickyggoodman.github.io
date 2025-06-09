@@ -111,6 +111,14 @@ a:hover {
 
 }
 
+#projectslist li {
+  margin-bottom: 1em;
+}
+
+#algorithms li {
+  margin-bottom: 1em;
+}
+
 ul {
 	position: relative;
 	list-style: none;
