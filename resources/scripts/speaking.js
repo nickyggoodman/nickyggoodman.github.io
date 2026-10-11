@@ -35,7 +35,7 @@
 let text = "Greetings! My name is Nicholas. I graduated from the University of " +
 "Maryland, College Park in May 2024 with a dual degree in Computer Science and " +
 "Economics. For more information regarding experience and coursework, please " + 
-"see my resume! Check out some of my projects listed below."
+"see my resume. See a selection of my projects listed below."
 const elem = document.getElementById("textBubble");
 
 text = wrap(text, 49);
